@@ -16,7 +16,7 @@ NAEP is currently undergoing a Cost Structure Review and I am the assessment tec
 
 The general NAEP results have been used to measure the impact of the COVID-19 pandemic on K-12 education in the U.S. This has resulted in sensational headlines and graphics like this one:
 
-![NAEP Before and After headline and graphic](Cranky-NAEP-COVID.png)<br/>(Cranky's Blog [NAEP Before and After COVID](https://crankytaxpayer.wordpress.com/2023/06/24/naep-before-and-after-covid/))
+> ![NAEP Before and After headline and graphic](Cranky-NAEP-COVID.png)<br/>(Cranky's Blog [NAEP Before and After COVID](https://crankytaxpayer.wordpress.com/2023/06/24/naep-before-and-after-covid/))
 
 Other headlines from articles referencing NAEP:
 
@@ -47,7 +47,24 @@ NAEP exports raw data in Excel (XLS) format as well as formatted reports in PDF,
 
 ## Visualization Design
 
-The test is administered in grades 4, 8, and 12. One thing I want to do, that I have not seen in any other NAEP visualization, is compare cohorts of students over time. For example, I want to compare the 8th grade students from one year with the 12th grade students four years later. This should give a measure of educational growth and we can see how that growth measure changes year over year.
+The test is administered in grades 4, 8, and 12. One thing I want to do, that I have not seen in any other NAEP visualization, is compare cohorts of students over time. For example, I want to compare the 8th grade students from one year with the 12th grade students four years later. This should give a measure of educational growth and we can see how that growth measure changes cohort to cohort.
+
+The values in these visualization concepts bear little or no resemblance to reality.
+
+Brainstorming<br/>
+![brainstorm.jpg](brainstorm.jpg)
+
+Initial Design 1<br/>
+![initial-1.jpg](initial-1.jpg)
+
+Initial Design 2<br/>
+![initial-2.jpg](initial-2.jpg)
+
+Initial Design 3<br/>
+![initial-3.jpg](initial-3.jpg)
+
+Realization Design<br/>
+![realization.jpg](realization.jpg)
 
 ## Must-Have Features
 
@@ -63,3 +80,16 @@ The test is administered in grades 4, 8, and 12. One thing I want to do, that I 
 * Additional subjects (Science, Civics, U.S. History)
 
 ## Project Schedule
+
+* **15 September 2023:** Project Proposal
+* **Week of Sep 19/21:** Project Review
+* **Week of Sep 26/28:** Retrieve Data from NAEP websites
+* **Week of Oct 3/5:** Script to prepare JSON data for visualization
+* **Week of Oct 10/12:** Fall Break
+* **Week of Oct 17/19:** Code up first visualization
+* **Week of Oct 24/26:** Enhance visualization
+* **3 November:** Project Milestone
+* **10 November:** Provide and accept Peer Feedback
+* **Week of Nov 14/16:** Integrate feedback from milestone and peer feedback.
+* **Week of Nov 21/23:** Polish up final project and prepare video.
+* **1 December:** Final Project Submission
