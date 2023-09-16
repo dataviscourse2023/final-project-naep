@@ -26,7 +26,7 @@ Other headlines from articles referencing NAEP:
 
 The last one includes a graphic that I used as the subject for the visualization critique assignment.
 
-In developing visualizations on NAEP data I have competition including the official [The Nation's Report Card Website](https://www.nationsreportcard.gov/). Nevertheless, I think there are visualization approaches that can do a better job. In particular, most visualizations attempt to represent progress in overall education but don't compare achievement against performance standards despite the fact that NAEP does set performance objectives for each subject. Also, existing visualizations don't attempt to track progress of the same cohort of students over time.
+There are plenty of existing visualizations of NAEP data including the official [The Nation's Report Card Website](https://www.nationsreportcard.gov/). Nevertheless, I think there are visualization approaches that can do a better job. In particular, most visualizations attempt to represent progress in overall education but don't compare performance against achievement standards despite the fact that NAEP does set achievement standards for each subject. Also, existing visualizations don't attempt to track progress of the same cohort of students over time.
 
 ## Project Objectives
 
@@ -71,12 +71,12 @@ Realization Design<br/>
 * Comparison of student achievement with standards for proficiency.
 * Measures of growth for across four-year spans (4th grade to 8th grade and 8th grade to 12th grade).
 * Indications of the impact of COVID-19.
-* At least two subject: Reading and Mathematics
+* At least two subjects: Reading and Mathematics
 
 ## Optional Features
 
 * State-level renderings.
-* Forecast of COVID-19 recovery. (I'm not sure whether this is possible with the data.)
+* Forecast of post-COVID recovery. (I'm not sure whether this is possible with the data.)
 * Additional subjects (Science, Civics, U.S. History)
 
 ## Project Schedule
