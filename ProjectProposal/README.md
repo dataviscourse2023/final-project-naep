@@ -51,19 +51,21 @@ The test is administered in grades 4, 8, and 12. One thing I want to do, that I 
 
 The values in these visualization concepts bear little or no resemblance to reality.
 
-Brainstorming<br/>
+### Brainstorming
+
 ![brainstorm.jpg](brainstorm.jpg)
 
-Initial Design 1<br/>
+### Initial Design 1
+
 ![initial-1.jpg](initial-1.jpg)
 
-Initial Design 2<br/>
+### Initial Design 2
 ![initial-2.jpg](initial-2.jpg)
 
-Initial Design 3<br/>
+### Initial Design 3
 ![initial-3.jpg](initial-3.jpg)
 
-Realization Design<br/>
+### Realization Design
 ![realization.jpg](realization.jpg)
 
 ## Must-Have Features
