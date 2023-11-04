@@ -3,8 +3,8 @@
 const CHART_WIDTH = 700;
 const CHART_HEIGHT = 400;
 const MARGIN = { left: 40, bottom: 40, top: 5, right: 20 };
-const YEARS = { min: 1978, max: 2022 };
-const TICK_YEARS = [1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022];
+const YEARS = { min: 1970, max: 2022 };
+const TICK_YEARS = [1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022];
 const STANDARD_NAMES = ["Basic", "Proficient", "Advanced"];
 const TEXT_HEIGHT = 14;
 const TEXT_MARGIN = 4;
@@ -134,6 +134,10 @@ function naepInit() {
 
         prepVisElement("vis-math");
         drawGraph("vis-math", "math", "grade8", ["All", "Male", "Female"]);
+
+        prepVisElement("vis-reading");
+        drawGraph("vis-reading", "reading", "grade8", ["All", "Male", "Female"]);
+
     });
 }
 
