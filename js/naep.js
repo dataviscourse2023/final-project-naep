@@ -2,7 +2,7 @@
 
 const CHART_WIDTH = 700;
 const CHART_HEIGHT = 400;
-const MARGIN = { left: 40, bottom: 40, top: 5, right: 20 };
+const MARGIN = { left: 40, bottom: 20, top: 5, right: 20 };
 const YEARS = { min: 1970, max: 2022 };
 const TICK_YEARS = [1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022];
 const STANDARD_NAMES = ["Basic", "Proficient", "Advanced"];
