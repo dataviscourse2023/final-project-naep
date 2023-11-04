@@ -8,6 +8,34 @@ const TICK_YEARS = [1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 
 const STANDARD_NAMES = ["Basic", "Proficient", "Advanced"];
 const TEXT_HEIGHT = 14;
 const TEXT_MARGIN = 4;
+const COLORS = [
+    "firebrick",
+    "darkblue",
+    "darkgreen",
+    "brown",
+    "indigo",
+    "blueviolet",
+    "darkorange",
+    "darkcyan",
+    "darkmagenta",
+    "darkslategray",
+    "olive",
+    "aqua",
+    "darksalmon",
+    "darkslateblue",
+    "royalblue",
+    "teal",
+    "yellowgreen",
+    "sienna",
+    "seagreen",
+    "sandybrown",
+    "rosybrown",
+    "tomato",
+    "turquoise",
+    "red",
+    "fuchsia"
+  ];
+
 let Data = {};
 let XScale;
 
@@ -30,7 +58,11 @@ function prepVisElement(id) {
         .call(d3.axisBottom(XScale).tickValues(TICK_YEARS).tickFormat(d3.format("d")));
 }
 
-function drawGraph(id, dataGrade, dataSeries) {
+function drawGraph(id, subject, grade, series) {
+    const dataSubject = Data[subject];
+    const dataGrade = dataSubject[grade];
+
+    // Graphic Elements
     const svg = d3.select("#"+id);
     const yaxis_g = svg.select(".y-axis");
     const standardLines = svg.select(".standardLines");
@@ -43,10 +75,6 @@ function drawGraph(id, dataGrade, dataSeries) {
     yaxis_g
         .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`)
         .call(d3.axisLeft(yscale));
-
-    const lineTranslator = d3.line()
-        .x(d => XScale(d.x))
-        .y(d => yscale(d.y));
 
     // Draw the achievement Levels
     standardLines.selectAll("*").remove();
@@ -66,15 +94,24 @@ function drawGraph(id, dataGrade, dataSeries) {
         .attr("y", y+TEXT_HEIGHT+TEXT_MARGIN)
         .attr("fill", "darkblue");
     }
-    
+
+    // Prep the data translator
+    const lineTranslator = d3.line()
+        .x(d => XScale(d.x))
+        .y(d => yscale(d.y));
+
     // Draw the lines    
     graphLines.selectAll("*").remove();
     graphLines.attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
-    graphLines.append("path")
-        .attr("d", lineTranslator(getLineData(Data.math.years, dataSeries)))
-        .attr("stroke", "fuchsia")
-        .attr("fill", "none");
+    for (let i=0; i<series.length; ++i) {
+        let dataSeries = dataGrade.data[series[i]];
+        graphLines.append("path")
+            .attr("d", lineTranslator(getLineData(dataSubject.years, dataSeries)))
+            .attr("stroke", COLORS[i])
+            .attr("fill", "none")
+            .attr("stroke-width", 2);
+    }
 }
 
 function getLineData(years, dataSeries) {
@@ -95,8 +132,8 @@ function naepInit() {
         console.log("Data loaded.");
         XScale = d3.scaleLinear([YEARS.min, YEARS.max], [0, CHART_WIDTH-MARGIN.left-MARGIN.right]);
 
-        prepVisElement("vis-p");
-        drawGraph("vis-p", Data.math.grade8, Data.math.grade8.data.All);
+        prepVisElement("vis-math");
+        drawGraph("vis-math", "math", "grade8", ["All", "Male", "Female"]);
     });
 }
 
