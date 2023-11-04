@@ -59,7 +59,7 @@ I explored the data both during export and then by examining it in Excel. The ei
 
 There are two subjects and three grades for a total of six assessments. While they are all on the same scale, comparing grades to each other or comparing subjects to each other doesn't yield useful insight - especially since the achievement levels are different for each of the six tests. Therefore, I expect to render separate graphs for each of the six. One interaction will be to select which graphs to show.
 
-On the other hand, the different series can be displayed as lines on the same graph. Showing all 21 at once will be too busy son another interaction will be to determine which series' to show.
+On the other hand, the different series can be displayed as lines on the same graph. Showing all 21 at once will be too busy so another interaction will be to determine which series' to show.
 
 ## Design Evolution
 
@@ -84,7 +84,7 @@ All of the concepts are familiar line charts. While we have discussed more advan
 
 Specifically, lines are good to show change in the same measure over time and that's the type of data being shown. Multiple lines on the same chart can make it easy to compare so long as there aren't too many lines.
 
-In the initial designs I considered scaling the values to the achievement levels. Doing so would make it possible to show multiple grades or different subjects on the same graph while still being faithful to the data. However, as we discussed in class, the purpose of putting multiple lines on the same graph is to facilitate comparison. It's not appropriate to compare performance on one grade grades with another. Nor is it appropriate to compare performance on between subjects. Therefore, I elected to have multiple graphs aligned to each other so that common trends are easily seen but inappropriate comparison of values is not encouraged.
+In the initial designs I considered scaling the values to the achievement levels. Doing so would make it possible to show multiple grades or different subjects on the same graph while still being faithful to the data. However, as we discussed in class, the purpose of putting multiple lines on the same graph is to facilitate comparison. It's not appropriate to compare performance on one grade with another. Nor is it appropriate to compare performance between subjects. Therefore, I elected to have multiple graphs aligned to each other so that common trends are easily seen but inappropriate comparison of values is discouraged.
 
 I also considered using bar charts to compare growth in achievement between different groups. But, having rendered the actual line charts, I found that achievement growth is easy to perceive and chose not to use bar charts.
 
@@ -112,15 +112,17 @@ In the the final evaluation I expect to be able to comment on difference among d
 
 ### Answering Questions
 
-These are my original questions from the proposal:
+These are the questions from the project objectives:
 
 **How significant has progress been over the last 2-3 decades?** As described above. There has been progress but it's limited when compared with achievement levels.
 
-**Has progress in education really been "wiped out" by the pandemic?** Certainly the group of students tested in 2022 performed worse than the prior group. This was immediately after the pandemic lockdowns. To tell whether this truly wiped out progress will require more time. It may be that students and schools recover quickly and make up for the lost time.
+**Has progress in education really been "wiped out" by the pandemic?** Certainly the group of students tested in 2022 performed worse than the prior group. This was immediately after the pandemic lockdowns. To tell whether this truly wiped out progress will require more time. It may be that students and schools recover quickly and make up for the lost time. Regardless, the loss in achievement is just as small as the gains have been.
 
-**For the same cohorts of students, what was the direct impact on progress?** To answer this question, I intended to compare test results for a cohort in the 8th grade to that same group in the 4th grade, and the same for 12th and 8th. However, I found that the intervals between NAEP tests are inconsistent thereby preventing such comparisons.
+**How does achievement and progress compare between different groups of students (gender, race/ethnicity, region, economic disadvantage, etc.)?** This question will be answered in the final version when selection of demographic groups is enabled.
 
-As a substitute, I am implementing comparisons of demographic groups. That will be available in the final version.
+In my proposal I had a question about gains for cohorts of students. I intended to compare test results for a cohort in the 8th grade to that same group in the 4th grade, and the same for 12th and 8th. However, I found that the intervals between NAEP tests are inconsistent thereby preventing such comparisons. Accordingly, I updated to a new question.
+
+**How successful are efforts such as the No Child Left Behind Act and the Every Student Succeeds Act.** No Child Left Behind (NCLB) was passed in 2001 and its replacement, the Every Student Succeeds Act (ESSA) was passed in 2015. The graphs do not show significant inflection points associated with either date.
 
 ### Visualization Functionality and Improvement
 
