@@ -18,21 +18,24 @@
         <section id="graphs">
             <h2>National Assessment of Educational Progress</h2>
             <div>Long-Term Trend (LTT)</div>
-            <h3>Grade 8, Mathematics</h3>   
-            <svg id="vis-math" style="width: 100%;"></svg>
-            <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
-            <p>&nbsp;</p>
-            <h3>Grade 8, Reading</h3>
-            <svg id="vis-reading" style="width: 100%;"></svg>
-            <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
+            <div class="graph">
+                <h3>Grade 8, Mathematics</h3>   
+                <svg id="vis-math" style="width: 100%;"></svg>
+                <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>   
+            </div>
+            <div class="graph">
+                <h3>Grade 8, Reading</h3>
+                <svg id="vis-reading" style="width: 100%;"></svg>
+                <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>    
+            </div>
         </section>
         <section id="controls">
             <div class="controlbox">
                 <table class="graph_select">
                     <tr><th>Math</th><th>Reading</th><th>&nbsp;</th></tr>
-                    <tr><td><input type="checkbox" /></td><td><input type="checkbox" /></td><th class="row">Grade 4</th></tr>
-                    <tr><td><input type="checkbox" checked /></td><td><input type="checkbox" checked /></td><th class="row">Grade 8</th></tr>
-                    <tr><td><input type="checkbox" /></td><td><input type="checkbox" /></td><th class="row">Grade 12</th></tr>
+                    <tr><td><input type="checkbox" id="gr_Math_4"/></td><td><input type="checkbox" id="gr_Reading_4" /></td><th class="row">Grade 4</th></tr>
+                    <tr><td><input type="checkbox" id="gr_Math_8" checked /></td><td><input type="checkbox" id="gr_Reading_8" checked /></td><th class="row">Grade 8</th></tr>
+                    <tr><td><input type="checkbox" id="gr_Math_12" /></td><td><input type="checkbox" id="gr_Reading_12" /></td><th class="row">Grade 12</th></tr>
                 </table>
                 <h4>Demographics</h4>
 

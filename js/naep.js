@@ -1,8 +1,9 @@
 "use strict"
 
 /* Tasks:
-- Turn on and off graphs
-- Turn on and off lines (including legend)
+(done) Turn on and off graphs
+- Turn on and off lines
+- Update legend with lines
 - Hover over chart shows detail
     - Substitute blank for 0
 - Update description
@@ -16,6 +17,8 @@ const TICK_YEARS = [1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 
 const STANDARD_NAMES = ["Basic", "Proficient", "Advanced"];
 const TEXT_HEIGHT = 14;
 const TEXT_MARGIN = 4;
+const SUBJECTS = ["Math", "Reading"];
+const GRADES = [4, 8, 12];
 const COLORS = [
     "firebrick",
     "darkblue",
@@ -47,7 +50,6 @@ const COLORS = [
 let Data = {};
 let XScale;
 
-// We took care of that for you
 async function loadData () {
     return await d3.json('data/NAEP_LTT.json');
 }
@@ -67,12 +69,11 @@ function prepVisElement(id) {
         .call(d3.axisBottom(XScale).tickValues(TICK_YEARS).tickFormat(d3.format("d")));
 }
 
-function drawGraph(id, subject, grade, series) {
-    const dataSubject = Data[subject];
-    const dataGrade = dataSubject[grade];
+function drawGraph(svg, subject, grade, series) {
+    const dataSubject = Data[subject.toLowerCase()];
+    const dataGrade = dataSubject["grade"+grade];
 
     // Graphic Elements
-    const svg = d3.select("#"+id);
     const yaxis_g = svg.select(".y-axis");
     const standardLines = svg.select(".standardLines");
     const graphLines = svg.select(".graphLines");
@@ -134,19 +135,81 @@ function getLineData(years, dataSeries) {
     return data;
 }
 
+function removeExistingGraphs() {
+    d3.selectAll("#graphs>div.graph").remove();
+}
+
+function addGraph(grade, subject) {
+    // Create the container div and add the <h3> title
+    const div = d3.select("#graphs").append("div");
+    div.attr("class", "graph");
+    div.append("h3").text(`Grade ${grade}, ${subject}`);
+    div.datum({grade: grade, subject: subject});
+    div["x-data"] = "Hello!";
+
+    // Create the baseline graph
+    const svg = div.append("svg");
+    svg.attr("class", "svg_graph")
+        .attr("viewBox", `0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`)
+
+    // Add the axes
+    const xaxis_g = svg.append("g").attr("class", "x-axis");
+    const yaxis_g = svg.append("g").attr("class", "y-axis");
+    svg.append("g").attr("class", "standardLines");
+    svg.append("g").attr("class", "graphLines");
+
+    // Create X-Axis and paint it
+    xaxis_g
+        .attr("transform", `translate(${MARGIN.left},${CHART_HEIGHT-MARGIN.bottom})`)
+        .call(d3.axisBottom(XScale).tickValues(TICK_YEARS).tickFormat(d3.format("d")));
+
+    // Add the legend
+    div.append("div").attr("class", "legend").text("Legend goes here.");
+}
+
+function onGraphChanged() {
+    removeExistingGraphs();
+    for (let grade of GRADES) {
+        for (let subject of SUBJECTS) {
+            if (document.getElementById(`gr_${subject}_${grade}`)?.checked) {
+                addGraph(grade, subject)
+            }
+        }
+    }
+    onLineChanged();
+}
+
+function onLineChanged() {
+    // Update each graph with the new lines
+    for (let graph of d3.selectAll("#graphs>div.graph")) {
+        var data = graph.__data__;        
+        drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, ["All", "Male", "Female"])
+    }
+}
+
+function attachControlEvents() {
+    for (let inp of document.querySelectorAll(".controlbox input")) {
+        if (inp.id.startsWith("gr_")) {
+            inp.addEventListener("change", onGraphChanged);
+        }
+        else if (inp.id.startsWith("chk_")) {
+            inp.addEventListener("change", onLineChanged);
+        }
+    }
+}
+
 function naepInit() {
     console.log("init");
+    attachControlEvents();
     loadData().then(data => {
         Data = data;
         console.log("Data loaded.");
+
+        // Prep Global
         XScale = d3.scaleLinear([YEARS.min, YEARS.max], [0, CHART_WIDTH-MARGIN.left-MARGIN.right]);
 
-        prepVisElement("vis-math");
-        drawGraph("vis-math", "math", "grade8", ["All", "Male", "Female"]);
-
-        prepVisElement("vis-reading");
-        drawGraph("vis-reading", "reading", "grade8", ["All", "Male", "Female"]);
-
+        // Draw default set of graphs
+        onGraphChanged();
     });
 }
 
