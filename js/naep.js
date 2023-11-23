@@ -1,7 +1,7 @@
 "use strict"
 
-const CHART_WIDTH = 700;
-const CHART_HEIGHT = 400;
+const CHART_WIDTH = 600;
+const CHART_HEIGHT = 300;
 const MARGIN = { left: 40, bottom: 20, top: 5, right: 20 };
 const YEARS = { min: 1970, max: 2022 };
 const TICK_YEARS = [1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022];
@@ -46,7 +46,8 @@ async function loadData () {
   
 function prepVisElement(id) {
     const svg = d3.select("#"+id);
-    svg.attr("width", CHART_WIDTH).attr("height", CHART_HEIGHT);
+    //svg.attr("width", CHART_WIDTH).attr("height", CHART_HEIGHT);
+    svg.attr("viewBox", `0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`)
     const xaxis_g = svg.append("g").attr("class", "x-axis");
     const yaxis_g = svg.append("g").attr("class", "y-axis");
     svg.append("g").attr("class", "standardLines");

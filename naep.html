@@ -15,18 +15,69 @@
     <p>Name: Brandt Redd;&nbsp;&nbsp;E-Mail: brandt.redd@utah.edu;&nbsp;&nbsp;UID: u1419848</p>
     </header>
     <main>
-        <h2>National Assessment of Educational Progress</h2>
-        <div>Long-Term Trend (LTT)</div>
-        <h2>Grade 8, Mathematics</h2>
-        <svg id="vis-math"></svg>
-        <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
-        <p>&nbsp;</p>
-        <h2>Grade 8, Reading</h2>
-        <svg id="vis-reading"></svg>
-        <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
+        <section id="graphs">
+            <h2>National Assessment of Educational Progress</h2>
+            <div>Long-Term Trend (LTT)</div>
+            <h3>Grade 8, Mathematics</h3>   
+            <svg id="vis-math" style="width: 100%;"></svg>
+            <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
+            <p>&nbsp;</p>
+            <h3>Grade 8, Reading</h3>
+            <svg id="vis-reading" style="width: 100%;"></svg>
+            <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>
+        </section>
+        <section id="controls">
+            <div class="controlbox">
+                <table class="graph_select">
+                    <tr><th>Math</th><th>Reading</th><th>&nbsp;</th></tr>
+                    <tr><td><input type="checkbox"></td><td><input type="checkbox"></td><th class="row">Grade 4</th></tr>
+                    <tr><td><input type="checkbox"></td><td><input type="checkbox"></td><th class="row">Grade 8</th></tr>
+                    <tr><td><input type="checkbox"></td><td><input type="checkbox"></td><th class="row">Grade 12</th></tr>
+                </table>
+                <h4>Demographics</h4>
+
+                <p>
+                    <input type="checkbox" id="chk_All" /><label for="chk_All">All Students</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_Male" /><label for="chk_Male">Male</label><br/>
+                    <input type="checkbox" id="chk_Female" /><label for="chk_Female">Female</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_Northeast" /><label for="chk_Northeast">Northeast Region</label><br/>
+                    <input type="checkbox" id="chk_Midwest" /><label for="chk_Midwest">Midwest Region</label><br/>
+                    <input type="checkbox" id="chk_South" /><label for="chk_South">Southern Region</label><br/>
+                    <input type="checkbox" id="chk_West" /><label for="chk_West">Western Region</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_Disability" /><label for="chk_Disability">With Disability</label><br/>
+                    <input type="checkbox" id="chk_NonDisability" /><label for="chk_NonDisability">Without Disability</label><br/>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_ELL" /><label for="chk_ELL">English-Language Learners</label><br/>
+                    <input type="checkbox" id="chk_NonELL" /><label for="chk_NonELL">Non English-Language Learners</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_White" /><label for="chk_White">White</label><br/>
+                    <input type="checkbox" id="chk_Black" /><label for="chk_Black">Black</label><br/>
+                    <input type="checkbox" id="chk_Hispanic" /><label for="chk_Hispanic">Hispanic</label><br/>
+                    <input type="checkbox" id="chk_AsianPacific" /><label for="chk_AsianPacific">Asian and Pacific Islander</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_EconDisadvantage" /><label for="chk_EconDisadvantage">Economically Disadvantaged</label><br/>
+                    <input type="checkbox" id="chk_NotEconDisadvantage" /><label for="chk_NotEconDisadvantage">Not Economically Disadvantaged</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="chk_City" /><label for="chk_City">City</label><br/>
+                    <input type="checkbox" id="chk_Suburb" /><label for="chk_Suburb">Suburb</label><br/>
+                    <input type="checkbox" id="chk_Town" /><label for="chk_Town">Town</label><br/>
+                    <input type="checkbox" id="chk_Rural" /><label for="chk_Rural">Rural</label>
+                </p>
+            </div>
+        </section>
     </main>
 
-    <p>The National Assessment of Educational Progress (NAEP), also known as "The Nation's Report Card" is administered to school samples to mesure educational progress in the United States. The Long-Term Trend (LTT) assessment is the oldest of the assessments in the NAEP portfolio with reading data dating back to 1971 and math data back to 1978. Assessments are given at grades 4, 8, and 12. More information is at <a href="https://nces.ed.gov/nationsreportcard/">The official NAEP website.</a>.</p>
+    <p>The National Assessment of Educational Progress (NAEP), also known as "The Nation's Report Card" is administered to school samples to measure educational progress in the United States. The Long-Term Trend (LTT) assessment is the oldest of the assessments in the NAEP portfolio with reading data dating back to 1971 and math data back to 1978. Assessments are given at grades 4, 8, and 12. More information is at <a href="https://nces.ed.gov/nationsreportcard/">The official NAEP website.</a>.</p>
 
     <p>Standardized assessments scores are reported on arbitrary scales. The NAEP LTT data use a scale from 0 to 500. However, all reported data range between 185 and 375. As there are no units and the scale is arbitrary, it doesn't matter if the visualization is rooted at zero.</p>
     
