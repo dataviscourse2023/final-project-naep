@@ -1,5 +1,13 @@
 "use strict"
 
+/* Tasks:
+- Turn on and off graphs
+- Turn on and off lines (including legend)
+- Hover over chart shows detail
+    - Substitute blank for 0
+- Update description
+*/
+
 const CHART_WIDTH = 600;
 const CHART_HEIGHT = 300;
 const MARGIN = { left: 40, bottom: 20, top: 5, right: 20 };
