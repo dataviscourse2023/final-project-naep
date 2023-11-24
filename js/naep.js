@@ -2,10 +2,13 @@
 
 /* Tasks:
 (done) Turn on and off graphs
-- Turn on and off lines
-- Update legend with lines
+(done) Turn on and off lines
+(done) Update legend with lines
 - Hover over chart shows detail
     - Substitute blank for 0
+    - Smaller font (in css?)
+- Tune responsive layout CSS
+    - All graphs on one wide screen
 - Update description
 */
 
@@ -42,33 +45,6 @@ const LABELS = {
     Town: {color: "indigo", text: "Town"},
     Rural: {color: "sienna", text: "Rural"}
 };
-const COLORS = [
-    "firebrick",
-    "darkblue",
-    "darkgreen",
-    "brown",
-    "indigo",
-    "blueviolet",
-    "darkorange",
-    "darkcyan",
-    "darkmagenta",
-    "darkslategray",
-    "olive",
-    "aqua",
-    "darksalmon",
-    "darkslateblue",
-    "royalblue",
-    "teal",
-    "yellowgreen",
-    "sienna",
-    "seagreen",
-    "sandybrown",
-    "rosybrown",
-    "tomato",
-    "turquoise",
-    "red",
-    "fuchsia"
-  ];
 
 let Data = {};
 let XScale;
@@ -185,7 +161,7 @@ function addGraph(grade, subject) {
     // Create the baseline graph
     const svg = div.append("svg");
     svg.attr("class", "svg_graph")
-        .attr("viewBox", `0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`)
+        .attr("viewBox", `0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`);
 
     // Add the axes
     const xaxis_g = svg.append("g").attr("class", "x-axis");
@@ -198,8 +174,21 @@ function addGraph(grade, subject) {
         .attr("transform", `translate(${MARGIN.left},${CHART_HEIGHT-MARGIN.bottom})`)
         .call(d3.axisBottom(XScale).tickValues(TICK_YEARS).tickFormat(d3.format("d")));
 
+    // Capture movement events
+    svg.on("mousemove", onGraphMouseMove);
+
     // Add the legend
     div.append("div").attr("class", "legend").text("Legend goes here.");
+}
+
+function onGraphMouseMove(e) {
+    if (!e.target.width) return;
+    let x = (e.offsetX * CHART_WIDTH / e.target.width.baseVal.value) - MARGIN.left; // Scale to chart coordinates
+    if (x < 0 || x > CHART_WIDTH - MARGIN.left - MARGIN.right) return; // Do nothing if out of range
+    // Scale to years
+    let year = XScale.invert(x);
+    console.log(year);
+    
 }
 
 function onGraphChanged() {
