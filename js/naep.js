@@ -156,7 +156,6 @@ function addGraph(grade, subject) {
     div.attr("class", "graph");
     div.append("h3").text(`Grade ${grade}, ${subject}`);
     div.datum({grade: grade, subject: subject});
-    div["x-data"] = "Hello!";
 
     // Create the baseline graph
     const svg = div.append("svg");
@@ -168,6 +167,7 @@ function addGraph(grade, subject) {
     const yaxis_g = svg.append("g").attr("class", "y-axis");
     svg.append("g").attr("class", "standardLines");
     svg.append("g").attr("class", "graphLines");
+    svg.append("g").attr("class", "overlayLine");
 
     // Create X-Axis and paint it
     xaxis_g
@@ -182,12 +182,44 @@ function addGraph(grade, subject) {
 }
 
 function onGraphMouseMove(e) {
-    if (!e.target.width) return;
-    let x = (e.offsetX * CHART_WIDTH / e.target.width.baseVal.value) - MARGIN.left; // Scale to chart coordinates
+    const svg = e.target;
+    if (!svg.width) return;
+    let x = (e.offsetX * CHART_WIDTH / svg.width.baseVal.value) - MARGIN.left; // Scale to chart coordinates
     if (x < 0 || x > CHART_WIDTH - MARGIN.left - MARGIN.right) return; // Do nothing if out of range
     // Scale to years
     let year = XScale.invert(x);
-    console.log(year);
+    //console.log(year);
+
+    // From target, find the data (subject, grade), and the nearest year
+    const data = svg.parentElement.__data__;
+    const years = Data[data.subject.toLowerCase()].years;
+    let dataYear = 0;
+    for (let y of years) {
+        if (Math.abs(year-dataYear) > Math.abs(year-y))
+            dataYear = y;
+    }
+    //console.log(dataYear);
+
+    const svgD3 = d3.select(svg);
+    
+    // Get an existing line (if any)
+    const lineHolder = svgD3.select("g.overlayLine");
+    var line = lineHolder.select("line");
+
+    // Create the line if it doesn't yet exist
+    if (line.empty()) {
+        line = lineHolder.append("line")
+            .attr("y1", MARGIN.top)
+            .attr("y2", CHART_HEIGHT-MARGIN.bottom)
+            .attr("stroke", "black");
+    }
+
+    // Set the line position
+    const lineX = XScale(dataYear) + MARGIN.left;
+    line.attr("x1", lineX);
+    line.attr("x2", lineX);
+    
+    // Show the data
     
 }
 
@@ -214,7 +246,7 @@ function onLineChanged() {
 
     // Update each graph with the new lines
     for (let graph of d3.selectAll("#graphs>div.graph")) {
-        var data = graph.__data__;        
+        var data = graph.__data__;
         drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series);
         drawLegend(graph.querySelector("div"), series);
     }
