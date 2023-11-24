@@ -19,6 +19,29 @@ const TEXT_HEIGHT = 14;
 const TEXT_MARGIN = 4;
 const SUBJECTS = ["Math", "Reading"];
 const GRADES = [4, 8, 12];
+const LABELS = {
+    All: {color: "black", text: "All Students"},
+    Male: {color: "blue", text: "Male"},
+    Female: {color: "darksalmon", text: "Female"},
+    Northeast: {color: "brown", text: "Northeast Region"},
+    Midwest: {color: "blueviolet", text: "Midwest Region"},
+    South: {color: "olive", text: "Southern Region"},
+    West: {color: "aqua", text: "Western Region"},
+    Disability: {color: "teal", text: "With Disability"},
+    NonDisability: {color: "firebrick", text: "Without Disability"},
+    ELL: {color: "royalblue", text: "English-Language Learner"},
+    NonELL: {color: "seagreen", text: "Non English-Language Learner"},
+    White: {color: "sandybrown", text: "White"},
+    Black: {color: "royalblue", text: "Black"},
+    Hispanic: {color: "darkgreen", text: "Hispanic"},
+    AsianPacific: {color: "rosybrown", text: "Asian and Pacific Islander"},
+    EconDisadvantage: {color: "chartreuse", text: "Economically Disadvantaged"},
+    NotEconDisadvantage: {color: "red", text: "Not Economically Disadvantaged"},
+    City: {color: "darkslategray", text: "City"},
+    Suburb: {color: "yellowgreen", text: "Suburb"},
+    Town: {color: "indigo", text: "Town"},
+    Rural: {color: "sienna", text: "Rural"}
+};
 const COLORS = [
     "firebrick",
     "darkblue",
@@ -114,13 +137,25 @@ function drawGraph(svg, subject, grade, series) {
     graphLines.selectAll("*").remove();
     graphLines.attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
-    for (let i=0; i<series.length; ++i) {
-        let dataSeries = dataGrade.data[series[i]];
+    for (let name of series) {
+        let dataSeries = dataGrade.data[name];
         graphLines.append("path")
             .attr("d", lineTranslator(getLineData(dataSubject.years, dataSeries)))
-            .attr("stroke", COLORS[i])
+            .attr("stroke", LABELS[name].color)
             .attr("fill", "none")
             .attr("stroke-width", 2);
+    }
+}
+
+function drawLegend(div, series) {
+    div.innerHTML = "";
+    for (let name of series) {
+        let label = LABELS[name];
+        let s = document.createElement("span");
+        s.style.color = label.color;
+        s.textContent = "\u25A0";
+        div.append(s);
+        div.append(document.createTextNode(label.text.replace(" ", "\u00A0") + " "));
     }
 }
 
@@ -187,12 +222,12 @@ function onLineChanged() {
             series.push(id.substring(4))
         }
     }
-    console.log(series);
 
     // Update each graph with the new lines
     for (let graph of d3.selectAll("#graphs>div.graph")) {
         var data = graph.__data__;        
-        drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series)
+        drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series);
+        drawLegend(graph.querySelector("div"), series);
     }
 }
 

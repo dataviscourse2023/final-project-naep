@@ -46,3 +46,12 @@ th.row {
 .svg_graph {
     width: 100%;
 }
+
+.legend {
+    max-width: 30em;
+    text-align: center;
+}
+
+.graph {
+    width: 100%;
+}
