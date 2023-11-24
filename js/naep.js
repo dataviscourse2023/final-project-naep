@@ -25,7 +25,7 @@ const GRADES = [4, 8, 12];
 const LABELS = {
     All: {color: "black", text: "All Students"},
     Male: {color: "blue", text: "Male"},
-    Female: {color: "darksalmon", text: "Female"},
+    Female: {color: "fuchsia", text: "Female"},
     Northeast: {color: "brown", text: "Northeast Region"},
     Midwest: {color: "blueviolet", text: "Midwest Region"},
     South: {color: "olive", text: "Southern Region"},
