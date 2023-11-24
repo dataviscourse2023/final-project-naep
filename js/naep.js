@@ -180,10 +180,19 @@ function onGraphChanged() {
 }
 
 function onLineChanged() {
+    let series = [];
+    for (let inp of document.querySelectorAll(".controlbox input")) {
+        let id = inp.id;
+        if (id.startsWith("chk_") && inp.checked) {
+            series.push(id.substring(4))
+        }
+    }
+    console.log(series);
+
     // Update each graph with the new lines
     for (let graph of d3.selectAll("#graphs>div.graph")) {
         var data = graph.__data__;        
-        drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, ["All", "Male", "Female"])
+        drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series)
     }
 }
 
