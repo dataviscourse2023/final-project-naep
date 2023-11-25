@@ -242,7 +242,12 @@ function onGraphMouseMove(e) {
 
     // Show the data
     if (lineX < CHART_WIDTH/2) {
-        let i=0;
+        textBox.append("text")
+            .attr("x", lineX + squareMargin)
+            .attr("y", MARGIN.top + textHeight)
+            .attr("font-size", textHeight)
+            .text(`${dataYear} Year`);
+        let i=1;
         for (let ld of lineData) {
             let lb = LABELS[ld.label];
             textBox.append("rect")
@@ -262,7 +267,13 @@ function onGraphMouseMove(e) {
         }
     }
     else {
-        let i=0;
+        textBox.append("text")
+            .attr("x", lineX - squareMargin)
+            .attr("y", MARGIN.top + textHeight)
+            .attr("font-size", textHeight)
+            .attr("text-anchor", "end")
+            .text(`Year ${dataYear}`);
+        let i=1;
         for (let ld of lineData) {
             let lb = LABELS[ld.label];
             textBox.append("rect")
