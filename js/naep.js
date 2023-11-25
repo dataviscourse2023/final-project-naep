@@ -13,8 +13,8 @@
 */
 
 const CHART_WIDTH = 600;
-const CHART_HEIGHT = 300;
-const MARGIN = { left: 40, bottom: 20, top: 5, right: 20 };
+const CHART_HEIGHT = 310;
+const MARGIN = { left: 44, bottom: 30, top: 5, right: 20 };
 const YEARS = { min: 1970, max: 2022 };
 const TICK_YEARS = [1970, 1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022];
 const STANDARD_NAMES = ["Basic", "Proficient", "Advanced"];
@@ -170,6 +170,23 @@ function addGraph(grade, subject) {
     xaxis_g
         .attr("transform", `translate(${MARGIN.left},${CHART_HEIGHT-MARGIN.bottom})`)
         .call(d3.axisBottom(XScale).tickValues(TICK_YEARS).tickFormat(d3.format("d")));
+
+    // Label the axes
+    svg.append("text")
+        .attr("x", CHART_WIDTH/2)
+        .attr("y", CHART_HEIGHT-1)
+        .attr("font-size", 14)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .text("Year");
+    svg.append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("font-size", 14)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .attr("transform", `translate(2,${CHART_HEIGHT/2}) rotate(90)`)
+        .text("Achievement Level");
 
     // Capture movement events
     svg.on("mousemove", onGraphMouseMove);
