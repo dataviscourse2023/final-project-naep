@@ -123,17 +123,6 @@ function drawGraph(svg, subject, grade, series) {
     }
 }
 
-function drawLegend(div, series) {
-    div.innerHTML = "";
-    for (let name of series) {
-        let label = LABELS[name];
-        let s = document.createElement("span");
-        s.style.color = label.color;
-        s.textContent = "\u25A0";
-        div.append(s);
-        div.append(document.createTextNode(label.text.replace(" ", "\u00A0") + " "));
-    }
-}
 
 function getLineData(years, dataSeries) {
        
@@ -176,9 +165,6 @@ function addGraph(grade, subject) {
 
     // Capture movement events
     svg.on("mousemove", onGraphMouseMove);
-
-    // Add the legend
-    div.append("div").attr("class", "legend").text("Legend goes here.");
 }
 
 function onGraphMouseMove(e) {
@@ -248,7 +234,6 @@ function onLineChanged() {
     for (let graph of d3.selectAll("#graphs>div.graph")) {
         var data = graph.__data__;
         drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series);
-        drawLegend(graph.querySelector("div"), series);
     }
 }
 
@@ -259,6 +244,15 @@ function attachControlEvents() {
         }
         else if (inp.id.startsWith("chk_")) {
             inp.addEventListener("change", onLineChanged);
+
+            // Add legend bullet
+            let label = LABELS[inp.id.substring(4)];
+            let span = document.createElement("span");
+            span.textContent = "\u25AE";
+            span.style.color = label.color;
+            span.style.position = "relative";
+            span.style.top = "-0.15em";
+            inp.parentNode.insertBefore(span, inp);
         }
     }
 }
