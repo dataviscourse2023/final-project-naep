@@ -4,10 +4,10 @@
 (done) Turn on and off graphs
 (done) Turn on and off lines
 (done) Update legend with lines
-- Hover over chart shows detail
+(done) - Hover over chart shows detail
     - Substitute blank for 0
     - Smaller font (in css?)
-- Tune responsive layout CSS
+(done) - Tune responsive layout CSS
     - All graphs on one wide screen
 - Update description
 */
@@ -354,3 +354,16 @@ function naepInit() {
 }
 
 document.addEventListener("DOMContentLoaded", naepInit);
+
+// For assistance with responsive design
+function onResize(e) {
+    var log = document.getElementById("resizeLog");
+    if (!log) {
+        log = document.createElement("div");
+        log.setAttribute("id", "resizeLog");
+        document.getElementById("graphs").after(log);
+    }
+    log.textContent = `Width: ${window.innerWidth}`;
+}
+
+addEventListener("resize", onResize);

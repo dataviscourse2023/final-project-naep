@@ -17,9 +17,28 @@ main {
     flex-flow: row wrap-reverse;
 }
 
-#graphs {
-    max-width: 40em;
+#graphcolumn {
     flex-grow: 1;
+}
+
+#graphs {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.graph {
+    width: 50%;
+}
+
+@media screen and (max-width: 1280px) {
+    #graphcolumn {
+        max-width: 40em;
+    }
+    .graph {
+        width: 100%;
+    }
+
 }
 
 .controlbox {
@@ -41,17 +60,4 @@ th.row {
 
 #controls p {
     margin: 0 0 0.5em 0;
-}
-
-.svg_graph {
-    width: 100%;
-}
-
-.legend {
-    max-width: 30em;
-    text-align: center;
-}
-
-.graph {
-    width: 100%;
 }

@@ -15,21 +15,12 @@
     <p>Name: Brandt Redd;&nbsp;&nbsp;E-Mail: brandt.redd@utah.edu;&nbsp;&nbsp;UID: u1419848</p>
     </header>
     <main>
-        <section id="graphs">
+        <section id="graphcolumn">
             <h2>National Assessment of Educational Progress</h2>
             <div>Long-Term Trend (LTT)</div>
-            <div class="graph">
-                <h3>Grade 8, Mathematics</h3>   
-                <svg id="vis-math" style="width: 100%;"></svg>
-                <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>   
-            </div>
-            <div class="graph">
-                <h3>Grade 8, Reading</h3>
-                <svg id="vis-reading" style="width: 100%;"></svg>
-                <div style="margin-left: 8em;"><span style="color: firebrick;">&#x25A0;</span>All Students <span style="color: darkblue;">&#x25A0;</span>Male <span style="color: darkgreen;">&#x25A0;</span>Female</div>    
-            </div>
+            <div id="graphs"></div>
         </section>
-        <section id="controls">
+        <section id="controlcolumn">
             <div class="controlbox">
                 <table class="graph_select">
                     <tr><th>Math</th><th>Reading</th><th>&nbsp;</th></tr>
@@ -43,8 +34,8 @@
                     <input type="checkbox" id="chk_All" checked /><label for="chk_All">All Students</label>
                 </p>
                 <p>
-                    <input type="checkbox" id="chk_Male" /><label for="chk_Male">Male</label><br/>
-                    <input type="checkbox" id="chk_Female" /><label for="chk_Female">Female</label>
+                    <input type="checkbox" id="chk_Male" checked /><label for="chk_Male">Male</label><br/>
+                    <input type="checkbox" id="chk_Female" checked /><label for="chk_Female">Female</label>
                 </p>
                 <p>
                     <input type="checkbox" id="chk_Northeast" /><label for="chk_Northeast">Northeast Region</label><br/>
