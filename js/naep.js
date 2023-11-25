@@ -48,6 +48,7 @@ const LABELS = {
 
 let Data = {};
 let XScale;
+let Series = [];
 
 async function loadData () {
     return await d3.json('data/NAEP_LTT.json');
@@ -69,6 +70,12 @@ function prepVisElement(id) {
 }
 
 function drawGraph(svg, subject, grade, series) {
+
+    // Clear prior detail
+    svg.select("g.overlayLine").selectAll("*").remove();
+    svg.select("g.overlayText").selectAll("*").remove();
+
+    // Get the subject and grade data
     const dataSubject = Data[subject.toLowerCase()];
     const dataGrade = dataSubject["grade"+grade];
 
@@ -157,6 +164,7 @@ function addGraph(grade, subject) {
     svg.append("g").attr("class", "standardLines");
     svg.append("g").attr("class", "graphLines");
     svg.append("g").attr("class", "overlayLine");
+    svg.append("g").attr("class", "overlayText");
 
     // Create X-Axis and paint it
     xaxis_g
@@ -177,18 +185,24 @@ function onGraphMouseMove(e) {
     //console.log(year);
 
     // From target, find the data (subject, grade), and the nearest year
-    const data = svg.parentElement.__data__;
-    const years = Data[data.subject.toLowerCase()].years;
+    const graphData = svg.parentElement.__data__;
+    const years = Data[graphData.subject.toLowerCase()].years;
     let dataYear = 0;
-    for (let y of years) {
-        if (Math.abs(year-dataYear) > Math.abs(year-y))
+    let yearIndex = 0;
+    for (let yi = 0; yi < years.length; ++yi) {
+        let y = years[yi];
+        if (Math.abs(year-dataYear) > Math.abs(year-y)) {
+            yearIndex = yi;
             dataYear = y;
+        }
     }
+    if (svg.__year__ == dataYear) return; // No change
+    svg.__year__ = dataYear;
     //console.log(dataYear);
 
     const svgD3 = d3.select(svg);
     
-    // Get an existing line (if any)
+    // Get the existing line (if any)
     const lineHolder = svgD3.select("g.overlayLine");
     var line = lineHolder.select("line");
 
@@ -204,8 +218,71 @@ function onGraphMouseMove(e) {
     const lineX = XScale(dataYear) + MARGIN.left;
     line.attr("x1", lineX);
     line.attr("x2", lineX);
-    
+
+    // Get the data
+    const sgData = Data[graphData.subject.toLowerCase()]["grade"+graphData.grade].data;
+    const lineData = [];
+    for (let label of Series) {
+        let datum = sgData[label][yearIndex];
+        if (datum > 0)
+            lineData.push({label: label, datum: datum});
+    }
+    console.log(lineData);
+
+    // Sort
+    lineData.sort((a,b) => b.datum - a.datum);
+
+    // Get and clear the overlay text box
+    const textBox = svgD3.select("g.overlayText");
+    textBox.selectAll("*").remove();
+
+    // Working constants
+    const textHeight = 12;
+    const squareMargin = 2;
+
     // Show the data
+    if (lineX < CHART_WIDTH/2) {
+        let i=0;
+        for (let ld of lineData) {
+            let lb = LABELS[ld.label];
+            textBox.append("rect")
+                .attr("x", lineX + squareMargin)
+                .attr("y", MARGIN.top + squareMargin + i * textHeight)
+                .attr("width", textHeight-squareMargin)
+                .attr("height", textHeight-squareMargin)
+                .attr("fill", lb.color);
+
+            textBox.append("text")
+                .attr("x", lineX + textHeight + squareMargin*2)
+                .attr("y", MARGIN.top + (i+1) * textHeight)
+                .attr("font-size", textHeight)
+                .text(`${ld.datum} ${lb.text}`);
+
+            ++i;
+        }
+    }
+    else {
+        let i=0;
+        for (let ld of lineData) {
+            let lb = LABELS[ld.label];
+            textBox.append("rect")
+                .attr("x", lineX - textHeight - squareMargin)
+                .attr("y", MARGIN.top + squareMargin + i * textHeight)
+                .attr("width", textHeight-squareMargin)
+                .attr("height", textHeight-squareMargin)
+                .attr("fill", lb.color);
+
+            textBox.append("text")
+                .attr("x", lineX - textHeight - squareMargin*2)
+                .attr("y", MARGIN.top + (i+1) * textHeight)
+                .attr("font-size", textHeight)
+                .attr("text-anchor", "end")
+                .text(`${lb.text} ${ld.datum}`);
+
+            ++i;
+        }
+    }
+    
     
 }
 
@@ -222,6 +299,7 @@ function onGraphChanged() {
 }
 
 function onLineChanged() {
+
     let series = [];
     for (let inp of document.querySelectorAll(".controlbox input")) {
         let id = inp.id;
@@ -235,6 +313,9 @@ function onLineChanged() {
         var data = graph.__data__;
         drawGraph(d3.select(graph).select("svg"), data.subject, data.grade, series);
     }
+
+    // Store the series globally
+    Series = series;
 }
 
 function attachControlEvents() {
