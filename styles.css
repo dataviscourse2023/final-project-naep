@@ -27,6 +27,10 @@ main {
     flex-flow: row wrap;
 }
 
+#description {
+    max-width: 35em;
+}
+
 .graph {
     width: 50%;
 }

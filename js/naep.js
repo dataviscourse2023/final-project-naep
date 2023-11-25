@@ -356,6 +356,7 @@ function naepInit() {
 document.addEventListener("DOMContentLoaded", naepInit);
 
 // For assistance with responsive design
+/*
 function onResize(e) {
     var log = document.getElementById("resizeLog");
     if (!log) {
@@ -367,3 +368,4 @@ function onResize(e) {
 }
 
 addEventListener("resize", onResize);
+*/
