@@ -13,6 +13,7 @@
     <header>
     <h1>Semester Project: NAEP Visualization</h1>
     <p>Name: Brandt Redd;&nbsp;&nbsp;E-Mail: brandt.redd@utah.edu;&nbsp;&nbsp;UID: u1419848</p>
+    <nav><a href="#discussion">Discussion</a> <a href="#project-info">Project Information</a></nav>
     </header>
     <main>
         <section id="graphcolumn">
@@ -20,13 +21,21 @@
             <div>Long-Term Trend (LTT)</div>
             <div id="graphs"></div>
             <div id="description">
-                <h3>Description</h3>
-                <p>The National Assessment of Educational Progress (NAEP), also known as "The Nation's Report Card" is administered to school samples to measure educational progress in the United States. The Long-Term Trend (LTT) assessment is the oldest of the assessments in the NAEP portfolio with reading data dating back to 1971 and math data back to 1978. Assessments are given at grades 4, 8, and 12. More information is at <a href="https://nces.ed.gov/nationsreportcard/">the official NAEP website</a>.</p>
+                <h3 id="discussion">Discussion</h3>
+                <p>The National Assessment of Educational Progress (NAEP), also known as "The Nation's Report Card" is administered to school samples to measure educational progress in the United States. The Long-Term Trend (LTT) assessment is the oldest of the assessments in the NAEP portfolio with reading data dating back to 1971 and math data back to 1978. Assessments are given at grades 4, 8, and 12. The most recent results in grades 4 and 8 are for 2020 and 2022. For Grade 12 the most recent results are for 2012. More information is at <a href="https://nces.ed.gov/nationsreportcard/">the official NAEP website</a>.</p>
+
+                <p>Use the checkboxes to select which grades, subjects, and demographics to display. Mouse over the graphs to view the detailed scores for each year.</p>
 
                 <p>Standardized assessments scores are reported on arbitrary scales. The NAEP LTT data use a scale from 0 to 500. However, all reported data range between 175 and 375. As there are no units and the scale is arbitrary, it doesn't matter if the visualization is rooted at zero.</p>
                 
                 <p>The NAEP organization assembled committees of expert educators to set achievement levels of Basic, Proficient, and Advanced for each grade and subject. These visualizations show progress relative to those standards.</p>
-            </div>        
+
+                <h3 id="project-info">Project Information</h3>
+                <p>**Code:**This visualization is created using JavaScript and the <a href="https://d3js.org/">D3.js</a> data visualization library. <a href="https://github.com/dataviscourse2023/final-project-naep">Click here for source code on GitHub.</a></p>
+                <p>**Process Book:** <a href="/ProcessBook/README">A description of the process through which I created this visualization.</a></p>
+                <p>**Data:** <a href="/data/NAEP_LTT.json">The source data in JSON format.</a></p>
+                <p>**ScreenCast:** <a href="https://youtu.be/35_-fge-LcE">A screencast demonstrating features of the visualization.</a></p>
+            </div>
         </section>
         <section id="controlcolumn">
             <div class="controlbox">
