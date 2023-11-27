@@ -38,7 +38,7 @@ Here is an example of a chart created from that site. The interactive part is th
 
 ## Questions (Project Objectives)
 
-I am targeting the new NAEP visualization at the following questions:
+I targeted the new NAEP visualization at the following questions:
 
 * How significant has progress been over the last 2-3 decades?
 * Has progress in U.S. education really been "wiped out" by the pandemic?
