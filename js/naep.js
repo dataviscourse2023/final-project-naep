@@ -1,17 +1,5 @@
 "use strict"
 
-/* Tasks:
-(done) Turn on and off graphs
-(done) Turn on and off lines
-(done) Update legend with lines
-(done) - Hover over chart shows detail
-    - Substitute blank for 0
-    - Smaller font (in css?)
-(done) - Tune responsive layout CSS
-    - All graphs on one wide screen
-- Update description
-*/
-
 const CHART_WIDTH = 600;
 const CHART_HEIGHT = 310;
 const MARGIN = { left: 44, bottom: 30, top: 5, right: 20 };
