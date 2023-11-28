@@ -18,7 +18,7 @@ The [National Assessment of Educational Progress](https://nces.ed.gov/nationsrep
 
 Recent NAEP results have been used to measure the impact of the COVID-19 pandemic on K-12 education in the U.S. This has resulted in sensational headlines and graphics like this one:
 
-> ![NAEP Before and After headline and graphic](Cranky-NAEP-COVID.png)<br/>(Cranky's Blog [NAEP Before and After COVID](https://crankytaxpayer.wordpress.com/2023/06/24/naep-before-and-after-covid/))
+> ![NAEP Before and After headline and graphic](Cranky-NAEP-COVID.png){: style="border: solid black 1px;"}<br/>(Cranky's Blog [NAEP Before and After COVID](https://crankytaxpayer.wordpress.com/2023/06/24/naep-before-and-after-covid/))
 
 Other headlines from articles referencing NAEP:
 
@@ -34,7 +34,7 @@ There are plenty of existing visualizations of NAEP data including the official 
 
 NAEP is presently undergoing a comprehensive review process covering objectives, methods, reports, outcomes, budget and impact. I am a member of the budget review committee with focus on the technology costs and contracts. I was invited to participate due to my background in standardized student assessments and in assessment technology.
 
-There are numerous existing examples of NAEP visualizations. Newspapers, websites, and blogs tend to generate graphs and run stories with each release. Some examples are above. I have not found any interactive visualizations except for those on the official NAEP site, [Nation's Report Card - Data Explorer](https://www.nationsreportcard.gov/ndecore/xplore/ltt). The existing interactions require multiple steps to generate a graph and limit your ability to compare performance across demographic groups, subjects, or grades.
+There are numerous existing examples of NAEP visualizations. Newspapers, websites, and blogs tend to generate graphs and run stories with each release. Some examples are linked to above. I have not found any interactive visualizations except for those on the official NAEP site, [Nation's Report Card - Data Explorer](https://www.nationsreportcard.gov/ndecore/xplore/ltt). The existing interactions require multiple steps to generate a graph and limit your ability to compare performance across demographic groups, subjects, or grades.
 
 Here is an example of a chart created from that site. The interactive part is the process of creating what to view; about eight confusing steps. Once the graphic is created, there's no interaction. 
 
@@ -69,22 +69,22 @@ On the other hand, the different series can be displayed as lines on the same gr
 
 Here are the brainstorming and initial designs that I prepared as part of the proposal.
 
-![brainstorm.jpg](brainstorm.jpg)
+![brainstorm.jpg](brainstorm.jpg){: style="max-width: 30em;"}
 
 ### Initial Design 1
 
-![initial-1.jpg](initial-1.jpg)
+![initial-1.jpg](initial-1.jpg){: style="max-width: 30em;"}
 
 ### Initial Design 2
-![initial-2.jpg](initial-2.jpg)
+![initial-2.jpg](initial-2.jpg){: style="max-width: 30em;"}
 
 ### Initial Design 3
-![initial-3.jpg](initial-3.jpg)
+![initial-3.jpg](initial-3.jpg){: style="max-width: 30em;"}
 
 ### Realization Design
-![realization.jpg](realization.jpg)
+![realization.jpg](realization.jpg){: style="max-width: 30em;"}
 
-All of the concepts are familiar line charts. While we have discussed more advanced visualizations in class, it was emphasized that position is the strongest indicator and that familiar visualizations are easier to interpret.
+Most of the concepts are familiar line charts. While we have discussed more advanced visualizations in class, it was emphasized that position is the strongest indicator and that familiar visualizations are easier to interpret.
 
 Specifically, lines are good to show change in the same measure over time and that's the type of data being shown. Multiple lines on the same chart can make it easy to compare so long as there aren't too many lines.
 
@@ -98,13 +98,13 @@ In the final result I elected to have multiple graphs aligned to each other so t
 
 Here is a screenshot of the final visualization with both Grade 8 graphs displayed and the All, Female, and Male demographics selected. I used a **Responsive Design** so a wider screen will show graphs side-by-side while a narrower screen stacks them as shown in the screenshot.
 
-![Milestone Visualization](FinalVis.png)
+![Milestone Visualization](FinalVis.png){: style="max-width: 40em; border: solid black 1px;"}
 
 The lines are plotted in the context of the three achievement levels which I have not found in any other NAEP rendering. I combined the interactive demographic selection with the legend to save space and I found that the combination works quite well. The mouse hover shows the actual figures for a particular year sorted from high to low.
 
 Selecting all 21 demographic categories results in a very busy graph as shown below. Nevertheless, the mouseover display this rendering helpful for when identifying outliers due to the ordering from high to low.
 
-![Milestone Visualization](AllSeries.png)
+![Milestone Visualization](AllSeries.png){: style="max-width: 40em; border: solid black 1px;"}
 
 The data are loaded from a single JSON file that includes both subjects, the three grades and all data series. The data are organized in a way that makes it easy to generate the graphs Implementation is in JavaScript using the D3 library. Graphs render to SVG.
 
