@@ -12,9 +12,10 @@ h3 {
     margin: 1rem 0 0 0;
 }
 
-main {
+#columns {
     display: flex;
     flex-flow: row wrap-reverse;
+    justify-content: center;
 }
 
 #graphcolumn {

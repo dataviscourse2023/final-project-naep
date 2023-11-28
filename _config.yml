@@ -1,0 +1,17 @@
+timezone: America/Denver
+encoding: utf-8
+markdown: kramdown
+domain: dataviscourse2023.github.io/
+exclude:
+  - docker-compose.yml
+  - .gitignore
+  - .sass-cache/
+  - .jekyll-cache/
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+sass:
+  sass_dir: _sass
